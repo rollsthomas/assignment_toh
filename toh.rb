@@ -1,33 +1,31 @@
 #toh.rb
 
-class toh
-	puts "Welcome to Tower of Hanoi!"
-	puts "Instructions:"
-	puts "First enter which column (</1-3>) you would like to move from, then enter which column (1-3) to move to."
+class Toh
+
+	@@height = 0 #DO I NEED TO INITAILIZE @@height???
 	
+	def start_game
+		puts "Welcome to Tower of Hanoi!"
+		puts "Instructions:"
+		#puts "First enter which column (</1-3>) you would like to move from, then enter which column (1-3) to move to."
+	end
+
 	# get height of tower
-	def height_of_tower
+	def setup
 		puts "How tall should the tower be?"
-		height = gets.chomp.to_i
-		puts "               TOWER OF HANOI!!!"
+		@@height = gets.chomp.to_i
+	end
+
 		#make array for 1st tower
-		tower_a = (1..height).to_a.reverse.map { |e| e.to_s}
-		height.times do  
-			puts "    #{tower_a[height - 1]}"
-			height -= 1
+	def setup_tower
+		puts "               TOWER OF HANOI!!!"
+		tower_a = (1..@@height).to_a.reverse.map { |e| e.to_s}
+		@@height.times do  
+			puts "    #{tower_a[@@height - 1]}"
+			@@height -= 1
 		end
 		puts "Tower 1       Tower 2       Tower 3"
 	end
-	#show current board
-	def current_board(height)
-		#puts board
-		n = height - 1
-		a = [] #tower 1
-		b = [] # tower 2
-		c = [] #tower 3
-		puts 
-
-	end	
 
 	def get_first_input
 		puts "Enter first move>"
@@ -44,3 +42,8 @@ class toh
 	end
 
 end
+#puts Toh.instance_methods
+start = Toh.new
+start.start_game
+start.setup
+start.setup_tower
